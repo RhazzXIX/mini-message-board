@@ -1,0 +1,35 @@
+{
+  "name": "mini-message-board",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "DEBUG=mini-message-board:* npm run devstart",
+    "getLogs": "git log --oneline --abbrev-commit --all --graph --decorate"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^7.2.3",
+    "morgan": "~1.9.1",
+    "pug": "^3.0.2",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.9",
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard-with-typescript": "^35.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "typescript": "^5.1.3"
+  }
+}
