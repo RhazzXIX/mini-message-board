@@ -4,7 +4,7 @@ block content
   form(action="/new", method="post")
     h1 Post
     label(for="name") Name: 
-      input#name(type="text", name="name") 
+      input#name(type="text", name="name", required= true) 
     label(for="message") Message: 
-      textarea#message(name="message", cols="30", rows="10")
+      textarea#message(name="message", cols="30", rows="10" ,required= true)
     button(type="submit") Send
