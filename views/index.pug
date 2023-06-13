@@ -1,7 +1,9 @@
 extends layout
 
 block content
-  h1= title
+  header 
+    h1= title
+    a(href="/new") Post Message
   p Welcome to #{title}
   ul
     each message in messages
