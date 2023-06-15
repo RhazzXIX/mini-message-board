@@ -3,6 +3,37 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+
+
 a {
   color: #00B7FF;
+}
+
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 450px;
+}
+
+form {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+input, textarea {
+  max-width: 260px;
+}
+
+button {
+  max-width: max-content;
+  padding: 4px 8px;
 }
