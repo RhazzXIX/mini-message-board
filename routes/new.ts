@@ -1,4 +1,5 @@
 import { Handler } from "express";
+import saveMessage from "../DBhandlers/sendMessage";
 
 const indexRouter = require("./index");
 const express = require("express");
@@ -10,12 +11,15 @@ router.get("/", function (req, res, next) {
 } as Handler);
 
 // Handle post messages
-router.post("/", function (req, res, next) {
+router.post("/", async function (req, res, next) {
   indexRouter.messages.push({
     text: req.body.message,
     user: req.body.name,
     added: new Date(),
   });
+  await saveMessage(req.body.message, req.body.name, new Date()).catch((err) =>
+    console.log(err)
+  );
   res.redirect("/");
 } as Handler);
 
