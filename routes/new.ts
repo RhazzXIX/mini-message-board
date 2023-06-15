@@ -12,13 +12,8 @@ router.get("/", function (req, res, next) {
 
 // Handle post messages
 router.post("/", async function (req, res, next) {
-  indexRouter.messages.push({
-    text: req.body.message,
-    user: req.body.name,
-    added: new Date(),
-  });
   await saveMessage(req.body.message, req.body.name, new Date()).catch((err) =>
-    console.log(err)
+    next(err)
   );
   res.redirect("/");
 } as Handler);

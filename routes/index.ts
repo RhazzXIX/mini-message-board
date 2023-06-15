@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-
+import fetchMessage from "../DBhandlers/fetchMesages";
+import mongoose from "mongoose";
 const express = require("express");
 const router = express.Router();
 
@@ -9,27 +10,21 @@ type message = {
   added: Date;
 };
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(1686629585892),
-  },
-  {
-    text: "Hello Up-skilling World!",
-    user: "Driven Person",
-    added: new Date(1686629623383),
-  },
-];
-
 /* GET home page. */
-router.get("/", function (req: Request, res: Response, next: NextFunction) {
-  res.render("index", {
-    title: "Mini Message Board",
-    messages: messages.sort((a: message, b: message) => {
-      return b.added.getTime() - a.added.getTime();
-    }),
-  });
-});
+router.get(
+  "/",
+  async function (req: Request, res: Response, next: NextFunction) {
+    await fetchMessage()
+      .then((fetchedMessages) => {
+        res.render("index", {
+          title: "Mini Message Board",
+          messages: fetchedMessages.sort((a: message, b: message) => {
+            return b.added.getTime() - a.added.getTime();
+          }),
+        });
+      })
+      .catch((err) => next(err));
+  }
+);
 
-module.exports = { router, messages };
+module.exports = { router };

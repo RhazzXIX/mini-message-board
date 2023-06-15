@@ -10,9 +10,6 @@ async function saveMessage(text: string, user: string, added: Date) {
   await mongoose.connect(mongoDB!).catch((err) => console.log(err));
   const message = new Message({ text, user, added });
   await message.save().catch((err) => console.log(err));
-  const messages = await Message.find()
-    .exec()
-    .catch((err) => console.log(err));
   await mongoose.disconnect();
 }
 
